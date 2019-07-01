@@ -21,16 +21,17 @@ let answer = 0;
 app.post('/calculations', (req, res) => {
     console.log('in /calculations POST', req.body );
 
-// math functions applied here via if statements
-
+// math functions applied here via IF statement
     if (req.body.operator === '+') {
-       answer = Number(req.body.inputOne) + Number(req.body.inputTwo)
+        answer = Number(req.body.inputOne) + Number(req.body.inputTwo)
         console.log('answer:', answer);
     }
+
     else if (req.body.operator === '-') {
         answer = Number(req.body.inputOne) - Number(req.body.inputTwo)
         console.log('answer:', answer);
     }
+    
     else if (req.body.operator === '*') {
         answer = Number(req.body.inputOne) * Number(req.body.inputTwo)
         console.log('answer:', answer);
@@ -39,8 +40,9 @@ app.post('/calculations', (req, res) => {
         answer = Number(req.body.inputOne) / Number(req.body.inputTwo)
         console.log('answer:', answer);
     }
+    
     else {
-        answer = 'lol nope :.(' 
+       answer = NaN;
         console.log('answer:', answer);
         // kick output: user clicking equals button w/o operator selected!!!
     }

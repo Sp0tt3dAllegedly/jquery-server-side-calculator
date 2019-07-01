@@ -1,3 +1,7 @@
+h1 {
+    text-align: center;
+}
+
 body {
    background-color: #EF2D56;
 }
@@ -12,8 +16,14 @@ main {
     padding: 10px;
 }
 
+#display {
+    background-color: #1BE7FF;
+    padding: 5px;
+}
+
 #historyDiv {
     background-color: #ED7D3A;
-    text-decoration: rebeccapurple wavy underline;
+    /* txt size adjustment up */
     padding-top: 15px;
 }
+
