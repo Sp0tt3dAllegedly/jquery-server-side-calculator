@@ -1,4 +1,4 @@
-// Setup our app
+// Set up my colorful calculation app
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -11,26 +11,65 @@ app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // define global variable(s)
-let equation = [];
+let mathsHistory = [];
+
+let answer = 0;
 
 
-// Set up route /my-colorful-calculator
-app.get('/my-colorful-calculator', (req, res) => {
-    console.log('in GET');
-    res.send();
-});
  
-// Set up /calculations POST route
+// Set up /calculations POST route + "mathin' stuuuffs"
 app.post('/calculations', (req, res) => {
     console.log('in /calculations POST', req.body );
-    selectedStuffs.push(req.body);
-    res.sendStatus(201);
+
+// math functions applied here via if statements
+
+    if (req.body.operator === '+') {
+       answer = Number(req.body.inputOne) + Number(req.body.inputTwo)
+        console.log('answer:', answer);
+    }
+    else if (req.body.operator === '-') {
+        answer = Number(req.body.inputOne) - Number(req.body.inputTwo)
+        console.log('answer:', answer);
+    }
+    else if (req.body.operator === '*') {
+        answer = Number(req.body.inputOne) * Number(req.body.inputTwo)
+        console.log('answer:', answer);
+    }
+    else if (req.body.operator === '/') {
+        answer = Number(req.body.inputOne) / Number(req.body.inputTwo)
+        console.log('answer:', answer);
+    }
+    else {
+        answer = 'lol nope :.(' 
+        console.log('answer:', answer);
+        // kick output: user clicking equals button w/o operator selected!!!
+    }
+
+        const answerPacked = {
+            inputOne: req.body.inputOne,
+            operator: req.body.operator,  // consists of req.body. and object properties 
+            inputTwo: req.body.inputTwo,  // plus newly defined global variable 'answer' as property
+            answer: answer,
+        }
+    mathsHistory.push(answerPacked);
+    res.send(201, 'one yee and half a haw for me, thank you.');
+// set and push answer object to answer array for use in history on DOM
+
+}); 
+
+// Set up /calculations GET route
+app.get('/calculations', (req, res) => {
+    console.log('in GET /calculations');
+    res.send({answer: answer}); // send the answer back, yo. 3xce1leeeenn7
 });
 
-// arithmetic functions here!!!
+// Set up /math-history GET route
+app.get('/math-history', (req, res) => {
+    console.log('in GET /math-history');
+    res.send(mathsHistory);
+});
 
-
-
+// XXXXXXXXXX>>> new stuffs here!!!
 
 // set up PORT to 'listen'
 

@@ -1,16 +1,16 @@
 $(document).ready(onReady);
 
 let selectedStuffs = {
-    inputOne : 0,
-    operaTOR : ' ',
-    inputTwo : 0,
+    inputOne: 0,
+    operator: ' ',
+    inputTwo: 0,
 
 } // create object to POST to server with user inputs
 
 // onReady function
 function onReady(){
     console.log('in onReady');
-    $('.operatorBtn').on('click', operatorButton);
+    $('.operateBtn').on('click', operateButton);
     $('#clearBtn').on('click', clearButton);
     $('#equalsBtn').on('click', doinMaths);
 }
@@ -20,33 +20,39 @@ function doinMaths(){
     selectedStuffs.inputOne = $('#inputOne').val();
     selectedStuffs.inputTwo = $('#inputTwo').val();
     console.log('we gonna do this here maths:', selectedStuffs);
-    
     $.ajax({
         type: 'POST',
         url: '/calculations',
         data: selectedStuffs,
     }).then(function (response) {
         console.log('Back from POST with:', response);
-
-
-
-    }).catch(function (err) {
-        alert('Error posting message:', err);
     })
+
+    showMeTheMath(); // answer import ie. showing us 'the math'
+    mathHistory(); // display log of past math performed by user(s)
+
 } // end doinMaths
 
-function operatorButton(){
-    console.log('clicked', $(this).text(), 'operaTOR button!');
-    selectedStuffs.operaTOR = $(this).text(); 
+function operateButton(){
+    console.log('clicked', $(this).text(), 'operaTORMUND button!');
+    selectedStuffs.operator = $(this).text(); 
     // .text() method uses text for selected property of 'this'
 
-} // end operatorButton function
+} // end operateButton function
 
 function clearButton(){
     console.log('clicked clear button!');
     $('#inputOne').val('');
-    doinMaths.operaTOR = ''; // can't set to .val because this is not input field
+    doinMaths.operator = ''; // can't set to .val because this is not input field
     $('#inputTwo').val('');
 } // clear user input fields for next entry
 
-
+function showMeTheMath() {
+     $.ajax({
+         type: 'GET',
+        url: '/calculations'
+     }).then(function (response) {
+         
+     })
+    
+}

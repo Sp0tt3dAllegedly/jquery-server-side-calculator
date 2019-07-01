@@ -15,4 +15,5 @@ main {
 #historyDiv {
     background-color: #ED7D3A;
     text-decoration: rebeccapurple wavy underline;
+    padding-top: 15px;
 }
