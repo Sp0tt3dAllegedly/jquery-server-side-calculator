@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Weekend Challenge #2 - Server-side Calculator</title>
+</head>
+<header><h1>Server-Side Calculator Challenge</h1></header>
+<body>
+<main>
+    <div id="mainDiv">
+
+        <input type="text" placeholder="your 1st number here" id="inputOne"/>
+          
+        <button id="addBtn" class="operatorBtn btn btn-light">+</button>
+        
+        <button id="subtractBtn" class="operatorBtn btn btn-light">-</button>
+        
+        <button id="divideBtn" class="operatorBtn btn btn-light">/</button>
+        
+        <button id="multiplyBtn" class="operatorBtn btn btn-light">*</button>
+        
+        <input type="text" placeholder="your 2nd number here" id="inputTwo"/>
+        
+        <button id ="equalsBtn" class ="btn btn-dark">=</button>
+        
+        <button id="clearBtn" class="btn btn-info">C</button>
+    
+    </div>
+    <div id='historyDiv'>
+        <ul id='mathHistory'>
+            <!-- this is where we will populate user maths history! -->
+        </ul>
+    </div>
+</main>
+</body>
+<script src="vendors/jquery-3.4.1.min.js"></script>
+<script src="scripts/client.js"></script>
+</html>

@@ -1,0 +1,18 @@
+body {
+   background-color: #EF2D56;
+}
+
+main {
+    background-color: #DCED31;
+    padding: 19px;
+}
+
+#mainDiv {
+    background-color: #0CCE6B;
+    padding: 10px;
+}
+
+#historyDiv {
+    background-color: #ED7D3A;
+    text-decoration: rebeccapurple wavy underline;
+}
