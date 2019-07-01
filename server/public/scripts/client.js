@@ -17,22 +17,35 @@ function onReady(){
 
 function doinMaths(){
     console.log('clicked equals button!');
-    doinMaths.inputOne = $('#inputOne').val();
-    doinMaths.inputTwo = $('#inputTwo').val();
+    selectedStuffs.inputOne = $('#inputOne').val();
+    selectedStuffs.inputTwo = $('#inputTwo').val();
     console.log('we gonna do this here maths:', selectedStuffs);
     
+    $.ajax({
+        type: 'POST',
+        url: '/calculations',
+        data: selectedStuffs,
+    }).then(function (response) {
+        console.log('Back from POST with:', response);
+
+
+
+    }).catch(function (err) {
+        alert('Error posting message:', err);
+    })
 } // end doinMaths
 
 function operatorButton(){
     console.log('clicked', $(this).text(), 'operaTOR button!');
-    selectedStuffs.operaTOR = $(this).text();
+    selectedStuffs.operaTOR = $(this).text(); 
+    // .text() method uses text for selected property of 'this'
 
 } // end operatorButton function
 
 function clearButton(){
     console.log('clicked clear button!');
     $('#inputOne').val('');
-    doinMaths.operaTOR = '';
+    doinMaths.operaTOR = ''; // can't set to .val because this is not input field
     $('#inputTwo').val('');
 } // clear user input fields for next entry
 

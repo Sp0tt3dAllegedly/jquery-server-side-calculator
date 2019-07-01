@@ -14,20 +14,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 let equation = [];
 
 
-
-
-
-// Set up route /about
-app.get('/', (req, res) => {
+// Set up route /my-colorful-calculator
+app.get('/my-colorful-calculator', (req, res) => {
     console.log('in GET');
-    //res.send();
+    res.send();
 });
  
-// Set up POST route
+// Set up /calculations POST route
 app.post('/calculations', (req, res) => {
-    console.log('in POST');
-    // .push(req.body);
-    //res.sendStatus(201);
+    console.log('in /calculations POST', req.body );
+    selectedStuffs.push(req.body);
+    res.sendStatus(201);
 });
 
 // arithmetic functions here!!!
